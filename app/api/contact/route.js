@@ -9,13 +9,13 @@ export async function POST(request) {
     try {
       data = text ? JSON.parse(text) : {}
     } catch (parseErr) {
-      return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 })
+      return jsonResponse({ error: 'Invalid JSON body.' }, 400)
     }
 
     const { name, email, message } = data || {}
 
     if (!name || !email || !message) {
-      return NextResponse.json({ error: 'Missing required fields: name, email, and message are required.' }, { status: 400 })
+      return jsonResponse({ error: 'Missing required fields: name, email, and message are required.' }, 400)
     }
 
     const user = process.env.EMAIL_USER
@@ -26,7 +26,7 @@ export async function POST(request) {
 
     if (!user || !pass) {
       console.error('Email transporter not configured - missing credentials')
-      return NextResponse.json({ error: 'Email transporter is not configured.' }, { status: 500 })
+      return jsonResponse({ error: 'Email transporter is not configured.' }, 500)
     }
 
     // create transporter using Gmail SMTP
@@ -46,7 +46,7 @@ export async function POST(request) {
       console.log('Nodemailer transporter verified')
     } catch (verifyErr) {
       console.error('Transporter verification failed:', verifyErr && verifyErr.message ? verifyErr.message : String(verifyErr))
-      return NextResponse.json({ error: 'Email transporter verification failed.' }, { status: 500 })
+      return jsonResponse({ error: 'Email transporter verification failed.' }, 500)
     }
 
     const htmlBody = `
@@ -66,17 +66,17 @@ export async function POST(request) {
       })
     } catch (sendErr) {
       console.error('sendMail failed:', sendErr && sendErr.message ? sendErr.message : String(sendErr))
-      return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 })
+      return jsonResponse({ error: 'Failed to send email.' }, 500)
     }
 
-    return NextResponse.json({ success: true })
+    return jsonResponse({ success: true }, 200)
   } catch (err) {
     // Avoid logging entire error objects that may contain streams; log message and stack for debugging
     const errMsg = err && typeof err === 'object' && 'message' in err ? err.message : String(err)
     const errStack = err && typeof err === 'object' && 'stack' in err ? err.stack : undefined
     console.error('Error sending contact email:', errMsg)
     if (errStack) console.error(errStack)
-    return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 })
+    return jsonResponse({ error: 'Failed to send email.' }, 500)
   }
 }
 
@@ -90,6 +90,15 @@ function escapeHtml(unsafe) {
 }
 
 // handle CORS preflight requests from preview/remote origins
+function jsonResponse(payload, status = 200) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  }
+  return NextResponse.json(payload, { status, headers })
+}
+
 export async function OPTIONS() {
   return new NextResponse(null, {
     status: 204,
