@@ -13,6 +13,7 @@ const nextConfig = {
   allowedDevOrigins: [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'https://7c524f1012104d9a8217bac3c0bec4e6-5c1818718f6c4bd683cddc9b6.fly.dev',
     'https://*.fly.dev',
     'https://*.vercel.app'
   ],
