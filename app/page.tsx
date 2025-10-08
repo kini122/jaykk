@@ -4,6 +4,7 @@ import { AvailableArtworks } from "@/components/sections/available-artworks"
 import { PaintingPortfolio } from "@/components/sections/painting-portfolio"
 import { About } from "@/components/sections/about"
 import { Contact } from "@/components/sections/contact"
+import { Footer } from "@/components/footer"
 
 export default function Page() {
   return (
@@ -14,9 +15,7 @@ export default function Page() {
       <PaintingPortfolio />
       <About />
       <Contact />
-      <footer className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-muted-foreground">fin</div>
-      </footer>
+      <Footer />
     </main>
   )
 }
