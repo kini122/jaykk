@@ -21,7 +21,11 @@ export async function POST(request) {
     const user = process.env.EMAIL_USER
     const pass = process.env.EMAIL_PASS
 
+    console.log('Contact request data:', { name, email, message: message ? `${String(message).slice(0,80)}...` : message })
+    console.log('Email user present:', Boolean(user))
+
     if (!user || !pass) {
+      console.error('Email transporter not configured - missing credentials')
       return NextResponse.json({ error: 'Email transporter is not configured.' }, { status: 500 })
     }
 
@@ -36,6 +40,15 @@ export async function POST(request) {
       },
     })
 
+    // verify transporter to provide clearer errors
+    try {
+      await transporter.verify()
+      console.log('Nodemailer transporter verified')
+    } catch (verifyErr) {
+      console.error('Transporter verification failed:', verifyErr && verifyErr.message ? verifyErr.message : String(verifyErr))
+      return NextResponse.json({ error: 'Email transporter verification failed.' }, { status: 500 })
+    }
+
     const htmlBody = `
       <h2>New Website Enquiry</h2>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
@@ -44,12 +57,17 @@ export async function POST(request) {
       <div>${escapeHtml(message).replace(/\n/g, '<br/>')}</div>
     `
 
-    await transporter.sendMail({
-      from: user,
-      to: user,
-      subject: 'New Website Enquiry',
-      html: htmlBody,
-    })
+    try {
+      await transporter.sendMail({
+        from: user,
+        to: user,
+        subject: 'New Website Enquiry',
+        html: htmlBody,
+      })
+    } catch (sendErr) {
+      console.error('sendMail failed:', sendErr && sendErr.message ? sendErr.message : String(sendErr))
+      return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 })
+    }
 
     return NextResponse.json({ success: true })
   } catch (err) {
