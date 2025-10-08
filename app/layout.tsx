@@ -23,14 +23,12 @@ const playfair = Playfair_Display({
 })
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const isProd = process.env.NODE_ENV === 'production'
-
   return (
     <html lang="en">
       {/* use sans for body, expose serif variable for headings */}
       <body className={`font-sans ${GeistSans.variable} ${playfair.variable} antialiased`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
-        {isProd && <Analytics />}
+        {AnalyticsProd ? <AnalyticsProd /> : null}
       </body>
     </html>
   )
