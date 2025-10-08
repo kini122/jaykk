@@ -65,15 +65,28 @@ const artworks: (Artwork & { imageUrl?: string })[] = [
   },
 ]
 
+import { useState } from "react"
+import Lightbox from "@/components/lightbox"
+
 export function AvailableArtworks() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [index, setIndex] = useState(0)
+  const images = artworks.map((a) => a.imageUrl ?? "/placeholder.svg")
+  const alts = artworks.map((a) => a.alt)
+
+  function openAt(i: number) {
+    setIndex(i)
+    setIsOpen(true)
+  }
+
   return (
     <section id="available-works" className="section">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-center">Available Artworks</h2>
         <div className="mt-8 flex justify-center">
           <div className="grid w-full max-w-4xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {artworks.map((a) => (
-              <article key={`${a.title}-${a.size}`} className="group bg-muted/80 p-3 rounded-md">
+            {artworks.map((a, i) => (
+              <article key={`${a.title}-${a.size}`} className="group bg-muted/80 p-3 rounded-md cursor-pointer" onClick={() => openAt(i)}>
                 <img
                   src={a.imageUrl ?? '/placeholder.svg'}
                   alt={a.alt}
@@ -89,6 +102,7 @@ export function AvailableArtworks() {
           </div>
         </div>
       </div>
+      {isOpen && <Lightbox images={images} alts={alts} initialIndex={index} onClose={() => setIsOpen(false)} />}
     </section>
   )
 }

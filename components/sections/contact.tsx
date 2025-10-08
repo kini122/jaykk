@@ -1,8 +1,57 @@
 "use client"
 
+import type React from "react"
+import { useState } from "react"
 import { Instagram, Linkedin } from "lucide-react"
 
 export function Contact() {
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [subject, setSubject] = useState("")
+  const [message, setMessage] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState<null | { ok: boolean; message: string }>(null)
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus(null)
+    setLoading(true)
+
+    try {
+      const payload = {
+        firstName,
+        lastName,
+        email,
+        subject,
+        message,
+        // include combined name for the existing backend
+        name: `${firstName} ${lastName}`.trim(),
+      }
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+
+      if (res.ok) {
+        setStatus({ ok: true, message: "✅ Message sent successfully!" })
+        setFirstName("")
+        setLastName("")
+        setEmail("")
+        setSubject("")
+        setMessage("")
+      } else {
+        setStatus({ ok: false, message: "❌ Failed to send message. Please try again." })
+      }
+    } catch (err) {
+      setStatus({ ok: false, message: "❌ Failed to send message. Please try again." })
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <section id="contact" className="section section-muted">
       <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -10,7 +59,7 @@ export function Contact() {
           <h2 className="font-serif text-3xl md:text-4xl tracking-tight">Contact me</h2>
           <p className="mt-2 text-muted-foreground">Simply fill out the form and I&apos;ll be in touch soon!</p>
 
-          <form className="mt-6 grid grid-cols-1 gap-4" onSubmit={(e) => e.preventDefault()} aria-label="Contact form">
+          <form className="mt-6 grid grid-cols-1 gap-4" onSubmit={handleSubmit} aria-label="Contact form">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium">
@@ -20,6 +69,8 @@ export function Contact() {
                   id="firstName"
                   name="firstName"
                   required
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2"
                 />
               </div>
@@ -31,6 +82,8 @@ export function Contact() {
                   id="lastName"
                   name="lastName"
                   required
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2"
                 />
               </div>
@@ -44,6 +97,8 @@ export function Contact() {
                 name="email"
                 type="email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2"
               />
             </div>
@@ -55,6 +110,8 @@ export function Contact() {
                 id="subject"
                 name="subject"
                 required
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
                 className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2"
               />
             </div>
@@ -67,17 +124,25 @@ export function Contact() {
                 name="message"
                 rows={5}
                 required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2"
               />
             </div>
             <div>
               <button
                 type="submit"
-                className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-primary-foreground"
+                disabled={loading}
+                className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-primary-foreground disabled:opacity-50"
               >
-                Submit
+                {loading ? "Sending..." : "Submit"}
               </button>
             </div>
+            {status && (
+              <div className={`mt-2 text-sm ${status.ok ? "text-green-600" : "text-red-600"}`} role="status" aria-live="polite">
+                {status.message}
+              </div>
+            )}
           </form>
           <div className="mt-6 flex items-center gap-4 text-muted-foreground">
             <a href="#" aria-label="Instagram" className="hover:text-foreground">
