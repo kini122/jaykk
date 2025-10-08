@@ -1,10 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
-import { Analytics } from "@vercel/analytics/next"
+import dynamic from 'next/dynamic'
 import { Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Suspense } from "react"
+
+const AnalyticsProd = process.env.NODE_ENV === 'production'
+  ? dynamic(() => import('@vercel/analytics/next').then((mod) => mod.Analytics), { ssr: false })
+  : null
 
 export const metadata: Metadata = {
   title: "jaykarun.com",
