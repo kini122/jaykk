@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 
 export async function POST(request) {
   try {
-    const data = await request.json()
+    const data = await request.clone().json()
     const { name, email, message } = data || {}
 
     if (!name || !email || !message) {
