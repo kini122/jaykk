@@ -50,7 +50,20 @@ const items: Item[] = [
   { title: "Eating Basket", medium: "Acrylic on canvas", status: "Sold", alt: "Eating Basket", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F2c5d601267624770b580c02df6a07c73?format=webp" },
 ]
 
+import { useState } from "react"
+import Lightbox from "@/components/lightbox"
+
 export function PaintingPortfolio() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [index, setIndex] = useState(0)
+  const images = items.map((it) => it.imageUrl ?? "/placeholder.svg")
+  const alts = items.map((it) => it.alt)
+
+  function openAt(i: number) {
+    setIndex(i)
+    setIsOpen(true)
+  }
+
   return (
     <section id="portfolio" className="section section-muted">
       <div className="mx-auto px-4">
@@ -58,7 +71,7 @@ export function PaintingPortfolio() {
         <div className="mt-8 flex justify-center">
           <div className="grid w-full max-w-4xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map((it, idx) => (
-              <article key={`${it.imageUrl ?? it.title}-${idx}`} className="group bg-muted/80 p-3 rounded-md">
+              <article key={`${it.imageUrl ?? it.title}-${idx}`} className="group bg-muted/80 p-3 rounded-md cursor-pointer" onClick={() => openAt(idx)}>
                 <img
                   src={it.imageUrl}
                   alt={it.alt}
@@ -74,6 +87,7 @@ export function PaintingPortfolio() {
           </div>
         </div>
       </div>
+      {isOpen && <Lightbox images={images} alts={alts} initialIndex={index} onClose={() => setIsOpen(false)} />}
     </section>
   )
 }
