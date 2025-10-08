@@ -3,7 +3,15 @@ import nodemailer from 'nodemailer'
 
 export async function POST(request) {
   try {
-    const data = await request.clone().json()
+    // parse body safely from a cloned request to avoid consuming the original stream
+    const text = await request.clone().text()
+    let data = {}
+    try {
+      data = text ? JSON.parse(text) : {}
+    } catch (parseErr) {
+      return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 })
+    }
+
     const { name, email, message } = data || {}
 
     if (!name || !email || !message) {
@@ -45,7 +53,11 @@ export async function POST(request) {
 
     return NextResponse.json({ success: true })
   } catch (err) {
-    console.error('Error sending contact email:', err)
+    // Avoid logging entire error objects that may contain streams; log message and stack for debugging
+    const errMsg = err && typeof err === 'object' && 'message' in err ? err.message : String(err)
+    const errStack = err && typeof err === 'object' && 'stack' in err ? err.stack : undefined
+    console.error('Error sending contact email:', errMsg)
+    if (errStack) console.error(errStack)
     return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 })
   }
 }
