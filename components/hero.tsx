@@ -15,9 +15,9 @@ export function Hero() {
 
         {/* overlay text placed on top of the image */}
         <div className="relative z-10 mx-auto max-w-6xl h-full px-4 flex items-center">
-          <div className="text-white/95 drop-shadow-lg">
-            <h1 className="font-serif leading-none tracking-tight text-4xl md:text-6xl lg:text-7xl">jaykarun</h1>
-            <p className="mt-2 text-lg md:text-xl">Visual Artist</p>
+          <div className="text-black">
+            <h1 className="font-serif leading-none tracking-tight text-6xl md:text-8xl lg:text-9xl">jaykarun</h1>
+            <p className="mt-3 text-xl md:text-2xl">Visual Artist</p>
           </div>
         </div>
 
