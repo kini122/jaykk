@@ -1,28 +1,24 @@
 "use client"
 
 export function Hero() {
+  const imageUrl = "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F4c04286fd49043edaf73277bf54f63c4?format=webp&width=800"
+
   return (
     <section id="home" className="relative scroll-mt-24 md:scroll-mt-28">
       {/* full-bleed hero image */}
       <div className="relative h-[360px] md:h-[520px] lg:h-[560px]">
         <img
-          src="/placeholder.svg"
+          src={imageUrl}
           alt="Black and white portrait facing right"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* subtle overlay replaced with decorative background image */}
-        <div
-          className="absolute inset-0 bg-no-repeat bg-center bg-cover"
-          style={{
-            backgroundImage:
-              "url(https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F7a2061cbd94f426b91c4b1bf515e2061)",
-          }}
-        />
 
-        {/* decorative text is part of the image; keep DOM copies hidden to match design */}
-        <div className="relative z-10 mx-auto max-w-6xl h-full px-4 flex flex-col justify-center">
-          <h1 className="hidden font-serif leading-none tracking-tight text-6xl md:text-8xl lg:text-9xl">jaykarun</h1>
-          <p className="hidden mt-3 text-xl md:text-2xl">Visual Artist</p>
+        {/* overlay text placed on top of the image */}
+        <div className="relative z-10 mx-auto max-w-6xl h-full px-4 flex items-center">
+          <div className="text-white/95 drop-shadow-lg">
+            <h1 className="font-serif leading-none tracking-tight text-4xl md:text-6xl lg:text-7xl">jaykarun</h1>
+            <p className="mt-2 text-lg md:text-xl">Visual Artist</p>
+          </div>
         </div>
 
         {/* bottom roles strip */}
