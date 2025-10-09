@@ -5,6 +5,7 @@ import { Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Suspense } from "react"
 import ClientAnalytics from "@/components/client-analytics"
+import PagePadding from "@/components/page-padding"
 
 
 export const metadata: Metadata = {
