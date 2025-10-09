@@ -84,7 +84,7 @@ export function AvailableArtworks() {
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-center">Available Artworks</h2>
         <div className="mt-8 flex justify-center">
-          <div className="grid w-full max-w-4xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid w-full max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {artworks.map((a, i) => (
               <article key={`${a.title}-${a.size}`} className="group bg-muted/80 p-3 rounded-md cursor-pointer" onClick={() => openAt(i)}>
                 <img
