@@ -66,7 +66,7 @@ export function PaintingPortfolio() {
 
   return (
     <section id="portfolio" className="section section-muted">
-      <div className="mx-auto px-4">
+      <div className="mx-auto max-w-7xl px-6">
         <h2 className="font-serif text-3xl md:text-4xl tracking-tight text-center">Painting Portfolio</h2>
         <div className="mt-8 flex justify-center">
           <div className="grid w-full max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
