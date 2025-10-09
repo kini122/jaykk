@@ -59,13 +59,13 @@ export function SiteHeader() {
         <ul className="flex flex-col gap-3 px-4 py-4">
           {links.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className="block text-sm font-medium"
                 onClick={handleNavigate}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
