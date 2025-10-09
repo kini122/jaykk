@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section id="home" className="relative scroll-mt-24 md:scroll-mt-28">
       {/* full-bleed hero image */}
-      <div className="relative h-[360px] md:h-[520px] lg:h-[560px]">
+      <div className="relative h-[480px] md:h-[720px] lg:h-[900px]">
         <img
           src={imageUrl}
           alt="Black and white portrait facing right"
