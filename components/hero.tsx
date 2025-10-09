@@ -10,7 +10,7 @@ export function Hero() {
         <img
           src={imageUrl}
           alt="Black and white portrait facing right"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-contain" style={{ objectPosition: 'center' }}
         />
 
         {/* overlay text placed on top of the image */}
