@@ -5,11 +5,11 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#available-works", label: "Available works" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/availables", label: "Available works" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ]
 
 export function SiteHeader() {
