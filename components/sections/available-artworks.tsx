@@ -87,11 +87,13 @@ export function AvailableArtworks() {
           <div className="grid w-full max-w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {artworks.map((a, i) => (
               <article key={`${a.title}-${a.size}`} className="group bg-muted/80 p-4 rounded-md cursor-pointer" onClick={() => openAt(i)}>
-                <img
-                  src={a.imageUrl ?? '/placeholder.svg'}
-                  alt={a.alt}
-                  className="w-full h-80 object-cover rounded-sm bg-muted"
-                />
+                <div className="relative w-full pb-[100%] sm:pb-0 sm:h-80">
+                  <img
+                    src={a.imageUrl ?? '/placeholder.svg'}
+                    alt={a.alt}
+                    className="absolute inset-0 w-full h-full object-cover rounded-sm bg-muted"
+                  />
+                </div>
                 <div className="mt-4 text-left">
                   <h3 className="text-lg font-medium">{a.title}</h3>
                   <p className="text-sm text-muted-foreground mt-2">Medium: {a.medium}</p>
