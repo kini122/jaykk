@@ -17,7 +17,7 @@ export function Hero() {
         <div className="relative z-10 mx-auto max-w-6xl h-full px-4 flex items-center">
           <div className="text-black">
             <h1 className="font-serif leading-none tracking-tight text-5xl md:text-7xl lg:text-8xl">jaykarun</h1>
-            <p className="mt-3 text-xl md:text-2xl">Visual Artist</p>
+            <p className="mt-3 text-lg md:text-xl">Visual Artist</p>
           </div>
         </div>
 
