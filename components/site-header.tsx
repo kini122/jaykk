@@ -20,7 +20,7 @@ export function SiteHeader() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="#home" className="text-sm font-medium tracking-tight md:text-base" onClick={handleNavigate}>
           jaykarun.com
           <span className="sr-only">Go to home</span>
@@ -56,7 +56,7 @@ export function SiteHeader() {
             : "hidden border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 md:hidden"
         }
       >
-        <ul className="flex flex-col gap-3 px-4 py-4">
+        <ul className="flex flex-col gap-3 px-6 py-4">
           {links.map((link) => (
             <li key={link.href}>
               <Link
