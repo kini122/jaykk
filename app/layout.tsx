@@ -24,7 +24,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       {/* use sans for body, expose serif variable for headings */}
       <body className={`font-sans ${GeistSans.variable} ${playfair.variable} antialiased`}>
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <PagePadding>{children}</PagePadding>
+        </Suspense>
         {process.env.NODE_ENV === 'production' && <ClientAnalytics />}
       </body>
     </html>
