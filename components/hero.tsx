@@ -1,7 +1,7 @@
 "use client"
 
 export function Hero() {
-  const imageUrl = "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F4c04286fd49043edaf73277bf54f63c4?format=webp&width=800"
+  const imageUrl = "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F4c04286fd49043edaf73277bf54f63c4?format=webp&width=1920&q=100"
 
   return (
     <section id="home" className="relative scroll-mt-24 md:scroll-mt-28">
