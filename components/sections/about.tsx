@@ -4,7 +4,7 @@ export function About() {
   return (
     <section id="about" className="section section-muted py-16">
       <div
-        className="mx-auto max-w-6xl px-4"
+        className="mx-auto max-w-7xl px-6"
         style={{
           color: "oklch(0.556 0 0)",
           letterSpacing: "-3.2px",
@@ -16,7 +16,7 @@ export function About() {
         About
       </div>
 
-      <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
         <div className="md:col-span-4 flex flex-col gap-6">
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F741a80510a77455493a938367f49c7c6?format=webp&width=800"
