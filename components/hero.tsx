@@ -79,13 +79,15 @@ export function Hero() {
           />
         ))}
 
-        {/* overlay text placed on top of the image */}
-        <div className="relative z-20 mx-auto max-w-7xl h-full px-6 flex items-center">
-          <div className="text-black">
-            <h1 className="font-serif leading-none tracking-tight text-5xl md:text-7xl lg:text-8xl">jaykarun</h1>
-            <p className="mt-3 text-lg md:text-xl">Visual Artist</p>
+        {/* overlay text placed on top of the image - only show on first slide */}
+        {index === 0 && (
+          <div className="relative z-20 mx-auto max-w-7xl h-full px-6 flex items-center">
+            <div className="text-black">
+              <h1 className="font-serif leading-none tracking-tight text-5xl md:text-7xl lg:text-8xl">jaykarun</h1>
+              <p className="mt-3 text-lg md:text-xl">Visual Artist</p>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* bottom roles strip */}
         <div className="absolute inset-x-0 bottom-0 z-20 bg-foreground/80 text-background">
@@ -102,35 +104,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* navigation arrows */}
-        <button
-          aria-label="Previous slide"
-          onClick={prev}
-          className="absolute left-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-foreground/70 text-background p-2 md:left-8"
-        >
-          ‹
-        </button>
-        <button
-          aria-label="Next slide"
-          onClick={next}
-          className="absolute right-4 top-1/2 z-30 -translate-y-1/2 rounded-full bg-foreground/70 text-background p-2 md:right-8"
-        >
-          ›
-        </button>
-
-        {/* dots */}
-        <div className="absolute z-30 left-1/2 bottom-4 -translate-x-1/2 flex gap-2">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              aria-label={`Go to slide ${i + 1}`}
-              onClick={() => goTo(i)}
-              className={`h-2 w-8 rounded-full transition-colors ${
-                i === index ? "bg-background" : "bg-background/40"
-              }`}
-            />
-          ))}
-        </div>
       </div>
     </section>
   )
