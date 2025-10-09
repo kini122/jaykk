@@ -71,15 +71,15 @@ export function PaintingPortfolio() {
         <div className="mt-8 flex justify-center">
           <div className="grid w-full max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {items.map((it, idx) => (
-              <article key={`${it.imageUrl ?? it.title}-${idx}`} className="group bg-muted/80 p-3 rounded-md cursor-pointer" onClick={() => openAt(idx)}>
+              <article key={`${it.imageUrl ?? it.title}-${idx}`} className="group bg-muted/80 p-4 rounded-md cursor-pointer" onClick={() => openAt(idx)}>
                 <img
                   src={it.imageUrl}
                   alt={it.alt}
-                  className="w-full h-48 object-cover rounded-sm bg-muted"
+                  className="w-full h-80 object-cover rounded-sm bg-muted"
                 />
-                <div className="mt-3 text-left">
-                  <h3 className="text-base font-medium">{it.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">Medium: {it.medium}</p>
+                <div className="mt-4 text-left">
+                  <h3 className="text-lg font-medium">{it.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-2">Medium: {it.medium}</p>
                   <p className="text-sm text-muted-foreground"><span className="font-semibold">Status:</span> {it.status}</p>
                 </div>
               </article>
