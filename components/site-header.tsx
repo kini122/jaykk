@@ -29,9 +29,9 @@ export function SiteHeader() {
           <ul className="flex items-center gap-6">
             {links.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-sm hover:underline underline-offset-4">
+                <Link href={link.href} className="text-sm hover:underline underline-offset-4" onClick={handleNavigate}>
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
