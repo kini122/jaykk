@@ -12,6 +12,16 @@ export async function POST(request) {
       return jsonResponse({ error: 'Invalid JSON body.' }, 400)
     }
 
+    // Log incoming request origin and user-agent to help diagnose CORS / proxy issues
+    try {
+      const origin = request.headers.get('origin')
+      const ua = request.headers.get('user-agent')
+      console.log('Contact API request origin:', origin)
+      console.log('Contact API request user-agent:', ua)
+    } catch (hdrErr) {
+      console.warn('Failed to read request headers for debugging:', hdrErr)
+    }
+
     const { name, email, message } = data || {}
 
     if (!name || !email || !message) {
