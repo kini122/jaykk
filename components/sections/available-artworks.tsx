@@ -34,7 +34,7 @@ const artworks: (Artwork & { imageUrl?: string })[] = [
     alt: "Bright abstract resembling kites in the sky.",
     placeholderQuery: "abstract kites flying bright yellow blue pink",
     imageUrl:
-      "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F19a06554e5c44d398057ca3724f6e2b4?format=webp",
+      "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F03ab875934364f86be3a366e6678e467",
   },
   {
     title: "Dogs Day",
