@@ -18,24 +18,42 @@ export function Contact() {
     setStatus(null)
     setLoading(true)
 
-    try {
-      const payload = {
-        firstName,
-        lastName,
-        email,
-        subject,
-        message,
-        // include combined name for the existing backend
-        name: `${firstName} ${lastName}`.trim(),
-      }
+    const payload = {
+      firstName,
+      lastName,
+      email,
+      subject,
+      message,
+      // include combined name for the backend
+      name: `${firstName} ${lastName}`.trim(),
+    }
 
-      const res = await fetch("/api/contact", {
+    // Use explicit origin to avoid unexpected proxy/CORS rewrites in preview environments
+    const url = `${window.location.origin}/api/contact`
+
+    // Abort if request takes too long
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 20000)
+
+    try {
+      console.log('Submitting contact request to:', url)
+      console.log('Contact payload preview:', {
+        name: payload.name,
+        email: payload.email,
+        message: payload.message ? `${String(payload.message).slice(0, 80)}...` : payload.message,
+      })
+
+      const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       })
 
+      clearTimeout(timeout)
+
       if (res.ok) {
+        console.log('Contact request succeeded with status', res.status)
         setStatus({ ok: true, message: "✅ Message sent successfully!" })
         setFirstName("")
         setLastName("")
@@ -43,11 +61,27 @@ export function Contact() {
         setSubject("")
         setMessage("")
       } else {
-        setStatus({ ok: false, message: "❌ Failed to send message. Please try again." })
+        let bodyText = ''
+        try {
+          bodyText = await res.text()
+          console.error('Contact request failed', res.status, bodyText)
+        } catch (readErr) {
+          console.error('Failed to read error body from /api/contact', readErr)
+        }
+        setStatus({ ok: false, message: `❌ Failed to send message. (${res.status}) Please try again.` })
       }
     } catch (err) {
-      setStatus({ ok: false, message: "❌ Failed to send message. Please try again." })
+      // Log full error for debugging (network errors, CORS, TLS, aborts)
+      console.error('Network error sending contact request:', err)
+
+      // Provide helpful UX message while preserving details in the console
+      if (err instanceof Error && err.name === 'AbortError') {
+        setStatus({ ok: false, message: '❌ Request timed out. Please try again.' })
+      } else {
+        setStatus({ ok: false, message: '❌ Failed to send message. Network error.' })
+      }
     } finally {
+      clearTimeout(timeout)
       setLoading(false)
     }
   }
