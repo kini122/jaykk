@@ -38,8 +38,18 @@ export async function POST(request) {
       return jsonResponse({ error: 'Email transporter is not configured.' }, 500)
     }
 
-    // create transporter using Gmail SMTP
-    const transporter = nodemailer.createTransport({
+    // dynamically import nodemailer to avoid bundling in runtimes that don't support it
+    let nodemailerModule
+    try {
+      nodemailerModule = await import('nodemailer')
+    } catch (impErr) {
+      console.error('Failed to import nodemailer module:', impErr)
+      return jsonResponse({ error: 'Email sending module unavailable.' }, 500)
+    }
+
+    const nodemailerLib = (nodemailerModule && (nodemailerModule.default || nodemailerModule))
+
+    const transporter = nodemailerLib.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
       secure: true,
