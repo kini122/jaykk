@@ -80,7 +80,7 @@ export function PaintingPortfolio() {
                 <div className="mt-4 text-left">
                   <h3 className="text-lg font-medium">{it.title}</h3>
                   <p className="text-sm text-muted-foreground mt-2">Medium: {it.medium}</p>
-                  <p className="text-sm text-muted-foreground"><span className="font-semibold">Status:</span> {it.status}</p>
+                  <p className="text-sm text-muted-foreground"><span className="font-semibold">Status:</span> <span className="text-red-600 font-semibold">{it.status.toUpperCase()}</span></p>
                 </div>
               </article>
             ))}
