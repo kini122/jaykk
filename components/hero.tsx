@@ -79,15 +79,7 @@ export function Hero() {
           />
         ))}
 
-        {/* overlay text placed on top of the image - only show on first slide */}
-        {index === 0 && (
-          <div className="relative z-20 mx-auto max-w-7xl h-full px-6 flex items-center">
-            <div className="text-black">
-              <h1 className="font-serif leading-none tracking-tight text-5xl md:text-7xl lg:text-8xl">jaykarun</h1>
-              <p className="mt-3 text-lg md:text-xl">Visual Artist</p>
-            </div>
-          </div>
-        )}
+        {/* overlay text removed per DOM diff */}
 
         {/* bottom roles strip */}
         <div className="absolute inset-x-0 bottom-0 z-20 bg-foreground/80 text-background">
