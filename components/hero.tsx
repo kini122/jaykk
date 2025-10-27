@@ -78,17 +78,45 @@ export function Hero() {
     <section id="home" className="relative scroll-mt-24 md:scroll-mt-28">
       <div className="relative h-[480px] md:h-[720px] lg:h-[900px] overflow-hidden">
         {/* slides stacked */}
-        {slides.map((s, i) => (
-          <img
-            key={s.src}
-            src={s.src}
-            alt={s.alt}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out ${
-              i === index ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-            style={{ objectPosition: "center" }}
-          />
-        ))}
+        {slides.map((s, i) => {
+          const visibleClass = i === index ? "opacity-100" : "opacity-0 pointer-events-none"
+          if (s.type === "pair") {
+            return (
+              <div
+                key={`slide-${i}`}
+                className={`absolute inset-0 h-full w-full transition-opacity duration-700 ease-in-out ${visibleClass}`}
+              >
+                <div className="flex h-full w-full">
+                  <img
+                    src={s.left.src}
+                    alt={s.left.alt}
+                    loading="lazy"
+                    className="w-1/2 h-full object-contain bg-muted"
+                    style={{ objectPosition: "center" }}
+                  />
+                  <img
+                    src={s.right.src}
+                    alt={s.right.alt}
+                    loading="lazy"
+                    className="w-1/2 h-full object-contain bg-muted"
+                    style={{ objectPosition: "center" }}
+                  />
+                </div>
+              </div>
+            )
+          }
+
+          return (
+            <img
+              key={`slide-${i}`}
+              src={s.src}
+              alt={s.alt}
+              loading="lazy"
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out ${visibleClass}`}
+              style={{ objectPosition: "center" }}
+            />
+          )
+        })}
 
         {/* overlay text removed per DOM diff */}
 
