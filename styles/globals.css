@@ -123,3 +123,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* small utility for header brand sizing */
+.site-brand {
+  font-size: 28px;
+}
