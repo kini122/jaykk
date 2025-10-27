@@ -6,7 +6,7 @@ export function Hero() {
   // slides: first is the existing hero image, then examples from available artworks + portfolio
   const slides = [
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2Fc42a4f5004514145a01d1b1dcdf5f9d1%2Fd9fe598b6e854d319b96417b11b4c5a0?format=webp&width=800",
+      src: "https://cdn.builder.io/api/v1/image/assets%2Fc42a4f5004514145a01d1b1dcdf5f9d1%2F13ca7b06291147e2a41630876e7b52a0",
       alt: "JayKarun Artist logo",
     },
     {
