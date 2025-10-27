@@ -31,10 +31,6 @@ export function Contact() {
     // Use relative URL to work across preview and production domains
     const url = '/api/contact'
 
-    // Abort if request takes too long
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 20000)
-
     try {
       console.log('Submitting contact request to:', url)
       console.log('Contact payload preview:', {
@@ -43,14 +39,16 @@ export function Contact() {
         message: payload.message ? `${String(payload.message).slice(0, 80)}...` : payload.message,
       })
 
-      const res = await fetch(url, {
+      const { fetchWithTimeout, FetchError } = await import("@/lib/fetcher")
+
+      const res = await fetchWithTimeout(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-        signal: controller.signal,
-      })
-
-      clearTimeout(timeout)
+        timeout: 20000,
+        retries: 2,
+        retryDelay: 500,
+      } as any)
 
       if (res.ok) {
         console.log('Contact request succeeded with status', res.status)
@@ -61,6 +59,7 @@ export function Contact() {
         setSubject("")
         setMessage("")
       } else {
+        // should be handled by fetchWithTimeout, but keep safe fallback
         let bodyText = ''
         try {
           bodyText = await res.text()
@@ -71,17 +70,17 @@ export function Contact() {
         setStatus({ ok: false, message: `❌ Failed to send message. (${res.status}) Please try again.` })
       }
     } catch (err) {
-      // Log full error for debugging (network errors, CORS, TLS, aborts)
       console.error('Network error sending contact request:', err)
-
-      // Provide helpful UX message while preserving details in the console
-      if (err instanceof Error && err.name === 'AbortError') {
+      // improved error UX
+      if (err && (err as any).name === 'AbortError') {
         setStatus({ ok: false, message: '❌ Request timed out. Please try again.' })
+      } else if (err && (err as any).name === 'FetchError') {
+        const ferr = err as any
+        setStatus({ ok: false, message: `❌ Failed to send message. ${ferr.message}` })
       } else {
         setStatus({ ok: false, message: '❌ Failed to send message. Network error.' })
       }
     } finally {
-      clearTimeout(timeout)
       setLoading(false)
     }
   }
