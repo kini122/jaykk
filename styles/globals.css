@@ -128,3 +128,15 @@
 .site-brand {
   font-size: 28px;
 }
+
+/* Force Gill Sans site-wide */
+:root {
+  --site-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Apply to all elements to ensure 100% coverage */
+*, *::before, *::after, html, body, input, textarea, select, button, a, h1, h2, h3, h4, h5, h6, p, span, li, label {
+  font-family: var(--site-font-family) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
