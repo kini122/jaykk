@@ -5,6 +5,7 @@ import { Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Suspense } from "react"
 import ClientAnalytics from "@/components/client-analytics"
+import FetchPatch from "@/components/fetch-patch"
 import PagePadding from "@/components/page-padding"
 
 
