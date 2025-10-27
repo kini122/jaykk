@@ -22,7 +22,7 @@ const playfair = Playfair_Display({
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       {/* use sans for body, expose serif variable for headings */}
       <body className={`font-sans ${GeistSans.variable} ${playfair.variable} antialiased`}>
         <Suspense fallback={<div>Loading...</div>}>
