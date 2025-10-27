@@ -48,6 +48,9 @@ const items: Item[] = [
   { title: "The Catch", medium: "Acrylic on canvas", status: "Sold", alt: "The Catch", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F1669d497d33542d89fc7612c213b73ea" },
   { title: "The arrow", medium: "Acrylic on canvas", status: "Sold", alt: "The arrow", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Ffe94a34e3a43444199833b2b919a9b2c?format=webp" },
   { title: "Eating Basket", medium: "Acrylic on canvas", status: "Sold", alt: "Eating Basket", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F2c5d601267624770b580c02df6a07c73?format=webp" },
+  { title: "First Fly", medium: "Acrylic on canvas", status: "Sold", alt: "First Fly", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F790f35fadef64566860a9626adb0c749%2F54c04b42e2fb46748d5c75f351219158?format=webp&width=800" },
+  { title: "Erotic Nature", medium: "Acrylic on canvas", status: "Sold", alt: "Erotic Nature", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F790f35fadef64566860a9626adb0c749%2F67095d1ae89a4b6183d80bddedd7385b?format=webp&width=800" },
+  { title: "Violinist", medium: "Acrylic on canvas", status: "Sold", alt: "Violinist", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F790f35fadef64566860a9626adb0c749%2Faf0adcbd60754b31ab7587d862f0b30b?format=webp&width=800" },
 ]
 
 import { useState } from "react"
