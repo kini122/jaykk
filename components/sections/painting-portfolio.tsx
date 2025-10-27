@@ -19,7 +19,7 @@ const items: Item[] = [
   { title: "Erotic Nature", medium: "Acrylic on canvas", status: "Sold", alt: "Erotic Nature", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F43224eb7d5864d4584c1eb6feea50340?format=webp" },
   { title: "Erotic Nature", medium: "Acrylic on canvas", status: "Sold", alt: "Erotic Nature", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fa43f8106fe8846b1834da3519c88791d?format=webp" },
   { title: "Erotic Nature", medium: "Acrylic on canvas", status: "Sold", alt: "Erotic Nature", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fc9086e821bab49acb226427e2c8c754b?format=webp" },
-  { title: "Erotic Nature", medium: "Acrylic on canvas", status: "Sold", alt: "Erotic Nature", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fc042bb8a83de40e3b4c531dddddf409f?format=webp" },
+  { title: "Gods Own Fruit", medium: "Acrylic on canvas", status: "Sold", alt: "Gods Own Fruit", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F790f35fadef64566860a9626adb0c749%2F4cf19c1af45342f0b6f7165bc9a94ba8" },
   { title: "Waiting Pot", medium: "Acrylic on canvas", status: "Sold", alt: "Waiting Pot", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fc03c56cfa21c47df9fb40f5471750986?format=webp" },
   { title: "Wasted Land", medium: "Acrylic on canvas", status: "Sold", alt: "Wasted Land", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fd1d3c821b168478cac444b20df11a94d?format=webp" },
   { title: "The Enchanted Nimph", medium: "Watercolor on paper", status: "Sold", alt: "The Enchanted Nimph", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F4d7931804eca4c7db5d77c9c6b6b1b3a?format=webp" },
@@ -36,10 +36,10 @@ const items: Item[] = [
   { title: "Tar Kettle", medium: "Acrylic on canvas", status: "Sold", alt: "Tar Kettle", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F853383a2ec034bc9af7af6409053c80c?format=webp" },
   { title: "The Party", medium: "Acrylic on canvas", status: "Sold", alt: "The Party", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F7b9dcc78770b4823ba66ebf0dde63825?format=webp" },
   { title: "Three Friends", medium: "Acrylic on canvas", status: "Sold", alt: "Three Friends", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F945f2ab551294ec9ad0e005ee2222066?format=webp" },
-  { title: "Convetsations", medium: "Watercolor on paper", status: "Sold", alt: "Convetsations", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F174880b048974585a7493c397dd14152?format=webp" },
+  { title: "Conversations", medium: "Watercolor on paper", status: "Sold", alt: "Conversations", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F174880b048974585a7493c397dd14152?format=webp" },
   { title: "Cityscape", medium: "Acrylic on canvas", status: "Sold", alt: "Cityscape", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F2d546145618d4ed5b02e54c12c7a8e96?format=webp" },
   { title: "Dancer", medium: "Acrylic on canvas", status: "Sold", alt: "Dancer", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2Fa461c896729e47e6921e00d17b4e18d6" },
-  { title: "Violinist", medium: "Acrylic on canvas", status: "Sold", alt: "Violinist", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F4d2fad927dc94943b90f2ece62c5064c" },
+  { title: "Hope of love", medium: "Acrylic on canvas", status: "Sold", alt: "Hope of love", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F4d2fad927dc94943b90f2ece62c5064c" },
   { title: "To a girl unknown", medium: "Acrylic on canvas", status: "Sold", alt: "To a girl unknown", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F7d0a2d4f663942d2b061a52603b9705d?format=webp" },
   { title: "Dancers in the mist", medium: "Acrylic on canvas", status: "Sold", alt: "Dancers in the mist", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F3d5003c418334064b8dcba9669d511d8" },
   { title: "Falling time", medium: "Acrylic on canvas", status: "Sold", alt: "Falling time", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fcd709b94ad2346a68b7e145d858fc864?format=webp" },
@@ -48,6 +48,9 @@ const items: Item[] = [
   { title: "The Catch", medium: "Acrylic on canvas", status: "Sold", alt: "The Catch", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F1669d497d33542d89fc7612c213b73ea" },
   { title: "The arrow", medium: "Acrylic on canvas", status: "Sold", alt: "The arrow", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Ffe94a34e3a43444199833b2b919a9b2c?format=webp" },
   { title: "Eating Basket", medium: "Acrylic on canvas", status: "Sold", alt: "Eating Basket", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F2c5d601267624770b580c02df6a07c73?format=webp" },
+  { title: "First Fly", medium: "Acrylic on canvas", status: "Sold", alt: "First Fly", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F790f35fadef64566860a9626adb0c749%2F54c04b42e2fb46748d5c75f351219158?format=webp&width=800" },
+  { title: "Erotic Nature", medium: "Acrylic on canvas", status: "Sold", alt: "Erotic Nature", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F790f35fadef64566860a9626adb0c749%2F67095d1ae89a4b6183d80bddedd7385b?format=webp&width=800" },
+  { title: "Violinist", medium: "Acrylic on canvas", status: "Sold", alt: "Violinist", imageUrl: "https://cdn.builder.io/api/v1/image/assets%2F790f35fadef64566860a9626adb0c749%2Faf0adcbd60754b31ab7587d862f0b30b?format=webp&width=800" },
 ]
 
 import { useState } from "react"
@@ -80,7 +83,7 @@ export function PaintingPortfolio() {
                 <div className="mt-4 text-left">
                   <h3 className="text-lg font-medium">{it.title}</h3>
                   <p className="text-sm text-muted-foreground mt-2">Medium: {it.medium}</p>
-                  <p className="text-sm text-muted-foreground"><span className="font-semibold">Status:</span> {it.status}</p>
+                  <p className="text-sm text-muted-foreground"><span className="font-semibold">Status:</span> <span className="text-red-600 font-semibold">{it.status.toUpperCase()}</span></p>
                 </div>
               </article>
             ))}

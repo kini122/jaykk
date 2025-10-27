@@ -19,7 +19,7 @@ const artworks: (Artwork & { imageUrl?: string })[] = [
       "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fae9bbbb6b1574ea18e5c9df35e78f227?format=webp",
   },
   {
-    title: "Loose He & She",
+    title: "He & She",
     medium: "Acrylic on canvas",
     size: "21 x 21 Inch",
     alt: "Two abstract figures in blues and purples.",
@@ -55,7 +55,7 @@ const artworks: (Artwork & { imageUrl?: string })[] = [
       "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F2bfb0909bf344e9cbc3313cc99282a7a?format=webp",
   },
   {
-    title: "Transformation",
+    title: "Untitled",
     medium: "Watercolor on paper",
     size: "21 x 21 Inch",
     alt: "Watercolor cranes near water with delicate branches.",

@@ -28,8 +28,8 @@ export function Contact() {
       name: `${firstName} ${lastName}`.trim(),
     }
 
-    // Use explicit origin to avoid unexpected proxy/CORS rewrites in preview environments
-    const url = `${window.location.origin}/api/contact`
+    // Use relative URL to work across preview and production domains
+    const url = '/api/contact'
 
     // Abort if request takes too long
     const controller = new AbortController()
@@ -189,7 +189,7 @@ export function Contact() {
         </div>
         <div>
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Ffd847cb96289478f942f23c8d7169737?format=webp&width=960"
+            src="https://cdn.builder.io/api/v1/image/assets%2F790f35fadef64566860a9626adb0c749%2F3a01ecc328e74b509b3f9d4d6b74e28d"
             alt="Abstract painting close up"
             className="w-full h-72 md:h-full object-cover rounded-md bg-muted"
           />
