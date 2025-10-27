@@ -98,14 +98,14 @@ export function Hero() {
                     src={s.left.src}
                     alt={s.left.alt}
                     loading="lazy"
-                    className="w-1/2 h-full object-contain bg-muted"
+                    className="w-1/2 h-full object-cover"
                     style={{ objectPosition: "center" }}
                   />
                   <img
                     src={s.right.src}
                     alt={s.right.alt}
                     loading="lazy"
-                    className="w-1/2 h-full object-contain bg-muted"
+                    className="w-1/2 h-full object-cover"
                     style={{ objectPosition: "center" }}
                   />
                 </div>
