@@ -29,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Suspense fallback={<div>Loading...</div>}>
           <PagePadding>{children}</PagePadding>
         </Suspense>
+        <FetchPatch />
         <ClientAnalytics />
       </body>
     </html>
