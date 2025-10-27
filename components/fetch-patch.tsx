@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 export default function FetchPatch() {
   useEffect(() => {
     if (typeof window === 'undefined') return
+    // Only patch fetch in development to avoid interfering with third-party scripts in preview/production
+    if (process.env.NODE_ENV !== 'development') return
     try {
       const globalAny: any = window
       if (!globalAny.fetch || globalAny.fetch.__patchedByApp) return
