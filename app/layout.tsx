@@ -6,7 +6,6 @@ import "./globals.css"
 import { Suspense } from "react"
 import ClientAnalytics from "@/components/client-analytics"
 import PagePadding from "@/components/page-padding"
-import FetchPatch from "@/components/fetch-patch"
 
 
 export const metadata: Metadata = {
