@@ -28,8 +28,8 @@ export function Contact() {
       name: `${firstName} ${lastName}`.trim(),
     }
 
-    // Use explicit origin to avoid unexpected proxy/CORS rewrites in preview environments
-    const url = `${window.location.origin}/api/contact`
+    // Use relative URL to work across preview and production domains
+    const url = '/api/contact'
 
     // Abort if request takes too long
     const controller = new AbortController()
