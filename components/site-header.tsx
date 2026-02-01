@@ -22,7 +22,7 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="#home" className="text-sm font-medium tracking-tight md:text-base" onClick={handleNavigate}>
-          jaykarun.com
+          <div className="site-brand text-lg md:text-xl lg:text-2xl">jaykarun.com</div>
           <span className="sr-only">Go to home</span>
         </Link>
         <nav aria-label="Primary" className="hidden md:block">

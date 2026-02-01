@@ -3,27 +3,45 @@
 import { useEffect, useRef, useState } from "react"
 
 export function Hero() {
-  // slides: first is the existing hero image, then examples from available artworks + portfolio
+  // slides: first is the existing hero image, then a dual-image slide, followed by examples from available artworks + portfolio
   const slides = [
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2Fa85192c0436d4571a8e6190f11f433bd%2F4c04286fd49043edaf73277bf54f63c4?format=webp&width=1920&q=100",
-      alt: "Black and white portrait facing right",
+      type: "single",
+      src: "https://cdn.builder.io/api/v1/image/assets%2Fc42a4f5004514145a01d1b1dcdf5f9d1%2F13ca7b06291147e2a41630876e7b52a0",
+      alt: "JayKarun Artist logo",
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fae9bbbb6b1574ea18e5c9df35e78f227?format=webp&width=1920&q=100",
-      alt: "Loose Talk",
+      type: "pair",
+      left: {
+        src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fff0b78b389b14489aabbbd73e5901810?format=webp&width=1920&q=100",
+        alt: "Artwork left",
+      },
+      right: {
+        src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1c88167d5b49426c88ffd1bdffde3734?format=webp&width=1920&q=100",
+        alt: "Artwork right",
+      }
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fff0b78b389b14489aabbbd73e5901810?format=webp&width=1920&q=100",
-      alt: "Loose He & She",
+      type: "pair",
+      left: {
+        src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fae9bbbb6b1574ea18e5c9df35e78f227?format=webp&width=1920&q=100",
+        alt: "Loose Talk",
+      },
+      right: {
+        src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fff0b78b389b14489aabbbd73e5901810?format=webp&width=1920&q=100",
+        alt: "Loose He & She",
+      }
     },
     {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1c88167d5b49426c88ffd1bdffde3734?format=webp&width=1920&q=100",
-      alt: "Gods own fruit",
-    },
-    {
-      src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fafff93b0b2b14a788ba45eda9fd8e0bc?format=webp&width=1920&q=100",
-      alt: "A cat in my garden",
+      type: "pair",
+      left: {
+        src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2F1c88167d5b49426c88ffd1bdffde3734?format=webp&width=1920&q=100",
+        alt: "Gods own fruit",
+      },
+      right: {
+        src: "https://cdn.builder.io/api/v1/image/assets%2F9e5464ed21f1499c91aab477b8b54d6e%2Fafff93b0b2b14a788ba45eda9fd8e0bc?format=webp&width=1920&q=100",
+        alt: "A cat in my garden",
+      }
     },
   ]
 
@@ -67,27 +85,47 @@ export function Hero() {
     <section id="home" className="relative scroll-mt-24 md:scroll-mt-28">
       <div className="relative h-[480px] md:h-[720px] lg:h-[900px] overflow-hidden">
         {/* slides stacked */}
-        {slides.map((s, i) => (
-          <img
-            key={s.src}
-            src={s.src}
-            alt={s.alt}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out ${
-              i === index ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-            style={{ objectPosition: "center" }}
-          />
-        ))}
+        {slides.map((s, i) => {
+          const visibleClass = i === index ? "opacity-100" : "opacity-0 pointer-events-none"
+          if (s.type === "pair") {
+            return (
+              <div
+                key={`slide-${i}`}
+                className={`absolute inset-0 h-full w-full transition-opacity duration-700 ease-in-out ${visibleClass}`}
+              >
+                <div className="flex h-full w-full">
+                  <img
+                    src={s.left.src}
+                    alt={s.left.alt}
+                    loading="lazy"
+                    className="w-1/2 h-full object-cover"
+                    style={{ objectPosition: "center" }}
+                  />
+                  <img
+                    src={s.right.src}
+                    alt={s.right.alt}
+                    loading="lazy"
+                    className="w-1/2 h-full object-cover"
+                    style={{ objectPosition: "center" }}
+                  />
+                </div>
+              </div>
+            )
+          }
 
-        {/* overlay text placed on top of the image - only show on first slide */}
-        {index === 0 && (
-          <div className="relative z-20 mx-auto max-w-7xl h-full px-6 flex items-center">
-            <div className="text-black">
-              <h1 className="font-serif leading-none tracking-tight text-5xl md:text-7xl lg:text-8xl">jaykarun</h1>
-              <p className="mt-3 text-lg md:text-xl">Visual Artist</p>
-            </div>
-          </div>
-        )}
+          return (
+            <img
+              key={`slide-${i}`}
+              src={s.src}
+              alt={s.alt}
+              loading="lazy"
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out ${visibleClass}`}
+              style={{ objectPosition: "center" }}
+            />
+          )
+        })}
+
+        {/* overlay text removed per DOM diff */}
 
         {/* bottom roles strip */}
         <div className="absolute inset-x-0 bottom-0 z-20 bg-foreground/80 text-background">
